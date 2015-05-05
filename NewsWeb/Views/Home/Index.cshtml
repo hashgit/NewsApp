@@ -1,0 +1,28 @@
+﻿<div ng-controller="NewsCtrl">
+    <div id="categoriesSection">
+        <h1>Categories</h1>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div ng-repeat="category in CategoriesWithSummaries">
+                    <h2>{{category.Name}}</h2>
+                    <p ng-repeat="article in category.Articles">
+                        <a href="#" ng-click="DisplayNews(category.Id, article.Id)">{{article.Title}}</a>
+                        <span class="clearfix">{{article.Summary}}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contentSection" style="display: none;">
+        <h2><a href="#" ng-click="GoBack()"><< Go Back</a>
+        </h2>
+        <div class="clearfix"></div>
+        <h1>{{SelectedNews.Title}}</h1>
+        <div class="clearfix"></div>
+        <p ng-bind-html="SelectedNews.Content">
+
+        </p>
+    </div>
+</div>
