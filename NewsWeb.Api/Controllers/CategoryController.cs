@@ -43,6 +43,7 @@ namespace NewsWeb.Api.Controllers
             try
             {
                 var category = await _categoryBusiness.GetByIdAsync(cid);
+                if (category == null) return NotFound();
 
                 var news = category.Articles.FirstOrDefault(a => a.Id == nid);
                 if (news == null) return NotFound();
